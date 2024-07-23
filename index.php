@@ -1,115 +1,207 @@
-<?php
-echo '<'.'?'.'xml version="1.0" encoding="UTF-8"'.'?'.'>';
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
-
+<html>
 <head>
-<title>TCPDF Examples</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="description" content="TCPDF is a PHP class for generating PDF documents on the fly" />
-<meta name="author" content="Nicola Asuni" />
-<meta name="keywords" content="Examples, TCPDF, PDF, PHP class" />
+	<title>HMS</title>
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+<link rel="stylesheet" type="text/css" href="style1.css">
+<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<style >
+     .form-control {
+    border-radius: 0.75rem;
+}
+</style>
+
+<script>
+    var check = function() {
+  if (document.getElementById('password').value ==
+    document.getElementById('cpassword').value) {
+    document.getElementById('message').style.color = '#5dd05d';
+    document.getElementById('message').innerHTML = 'Matched';
+  } else {
+    document.getElementById('message').style.color = '#f55252';
+    document.getElementById('message').innerHTML = 'Not Matching';
+  }
+}
+
+function alphaOnly(event) {
+  var key = event.keyCode;
+  return ((key >= 65 && key <= 90) || key == 8 || key == 32);
+};
+
+function checklen()
+{
+    var pass1 = document.getElementById("password");  
+    if(pass1.value.length<6){  
+        alert("Password must be at least 6 characters long. Try again!");  
+        return false;  
+  }  
+}
+
+</script>
+
 </head>
 
+<!------ Include the above in your HEAD tag ---------->
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" >
+    <div class="container">
 
-<h1>TCPDF Examples</h1>
+      <a class="navbar-brand js-scroll-trigger" href="#" style="margin-top: 10px;margin-left:-65px;font-family: 'IBM Plex Sans', sans-serif;"><h4><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp VANI FOUNDATION </h4></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item" style="margin-right: 40px;">
+            <a class="nav-link js-scroll-trigger" href="index.php" style="color: white;font-family: 'IBM Plex Sans', sans-serif;"><h6>HOME</h6></a>
+          </li>
+  
+          <li class="nav-item" style="margin-right: 40px;">
+            <a class="nav-link js-scroll-trigger" href="services.html" style="color: white;font-family: 'IBM Plex Sans', sans-serif;"><h6>ABOUT US</h6></a>
+          </li>
 
-<h2>PDF</h2>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="contact.html" style="color: white;font-family: 'IBM Plex Sans', sans-serif;"><h6>CONTACT</h6></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-<ol>
-<li>Simple PDF with default Header and Footer: [<a href="example_001.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Simple PDF without Header and Footer: [<a href="example_002.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Custom Header and Footer: [<a href="example_003.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Cell stretching: [<a href="example_004.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Multicell: [<a href="example_005.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>WriteHTML and RTL support: [<a href="example_006.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Independent columns with WriteHTMLCell: [<a href="example_007.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>External UTF-8 text file: [<a href="example_008.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Image: [<a href="example_009.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Multiple columns: [<a href="example_010.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Colored Tables: [<a href="example_011.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Graphic Functions: [<a href="example_012.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Graphic Transformations: [<a href="example_013.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Javascript and Forms: [<a href="example_014.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Bookmarks (Table of Content): [<a href="example_015.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Document Encryption: [<a href="example_016.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Independent columns with MultiCell: [<a href="example_017.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Persian and Arabic language on RTL document: [<a href="example_018.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Non unicode / Alternative config file: [<a href="example_019.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Multicell complex alignment: [<a href="example_020.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>writeHTML alignment: [<a href="example_021.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>CMYK colors: [<a href="example_022.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Page Groups: [<a href="example_023.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Object Visibility and Layers: [<a href="example_024.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Object Transparency: [<a href="example_025.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Text Rendering Modes and Text Clipping: [<a href="example_026.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>1D Barcodes: [<a href="example_027.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Multiple page formats: [<a href="example_028.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Set PDF viewer display preferences: [<a href="example_029.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Colour gradients: [<a href="example_030.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Pie Chart Graphic: [<a href="example_031.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>EPS/AI vectorial image: [<a href="example_032.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Mixed font types (TrueType Unicode, core, CID-0): [<a href="example_033.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Clipping masks: [<a href="example_034.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Line styles with cells and multicells: [<a href="example_035.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Text Annotations: [<a href="example_036.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Spot Colors: [<a href="example_037.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>NON-embedded CID-0 CJK font: [<a href="example_038.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>HTML Justification: [<a href="example_039.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Booklet (double-sided pages): [<a href="example_040.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>File attachment: [<a href="example_041.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Image with Alpha Channel Transparency: [<a href="example_042.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Disk caching: [<a href="example_043.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Move, Copy and Delete page: [<a href="example_044.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Table Of Content with Bookmarks: [<a href="example_045.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Text hyphenation: [<a href="example_046.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Transactions and UNDO: [<a href="example_047.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Table header and rowspan: [<a href="example_048.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>TCPDF methods in HTML: [<a href="example_049.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>2D Barcode (QR-Code, Datamatrix ECC200 and PDF417): [<a href="example_050.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Full page background: [<a href="example_051.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Digital Signature Certification: [<a href="example_052.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Javascript functions: [<a href="example_053.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>XHTML Form: [<a href="example_054.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Font Dump: [<a href="example_055.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Crop Marks and Registration Marks: [<a href="example_056.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Cell vertical alignments and borders: [<a href="example_057.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>SVG Image: [<a href="example_058.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Table Of Content with HTML templates: [<a href="example_059.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Advanced page settings: [<a href="example_060.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>XHTML + CSS: [<a href="example_061.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>XObject Templates: [<a href="example_062.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Text stretching and spacing (tracking/kerning): [<a href="example_063.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>No-write page regions: [<a href="example_064.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>PDF/A-1b (ISO 19005-1:2005) document: [<a href="example_065.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-</ol>
+	
 
-<h2>Barcodes</h2>
+<div class="container register" style="font-family: 'IBM Plex Sans', sans-serif;">
+                <div class="row">
+                    <div class="col-md-3 register-left" style="margin-top: 10%;right: 5%">
+                        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                        <h3>Welcome</h3>
+                       
+                    </div>
+                    <div class="col-md-9 register-right" style="margin-top: 40px;left: 80px;">
+                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist" style="width: 40%;">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Patient</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Doctor</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#admin" role="tab" aria-controls="admin" aria-selected="false">Receptionist</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">Register as Patient</h3>
+                                <form method="post" action="func2.php">
+                                <div class="row register-form">
+                                    
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control"  placeholder="First Name *" name="fname"  onkeydown="return alphaOnly(event);" required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Your Email *" name="email"  />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password *" id="password" name="password" onkeyup='check();' required/>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <div class="maxl">
+                                                <label class="radio inline"> 
+                                                    <input type="radio" name="gender" value="Male" checked>
+                                                    <span> Male </span> 
+                                                </label>
+                                                <label class="radio inline"> 
+                                                    <input type="radio" name="gender" value="Female">
+                                                    <span>Female </span> 
+                                                </label>
+                                            </div>
+                                            <a href="index1.php">Already have an account?</a>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Last Name *" name="lname" onkeydown="return alphaOnly(event);" required/>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <input type="tel" minlength="10" maxlength="10" name="contact" class="form-control" placeholder="Your Phone *"  />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control"  id="cpassword" placeholder="Confirm Password *" name="cpassword"  onkeyup='check();' required/><span id='message'></span>
+                                        </div>
+                                        <input type="submit" class="btnRegister" name="patsub1" onclick="return checklen();" value="Register"/>
+                                    </div>
 
-<ol>
-<li>1D barcode HTML format [<a href="barcodes/example_1d_html.php" title="1D barcode [HTML] [new window]" target="_blank">HTML</a>]</li>
-<li>1D barcode PNG format [<a href="barcodes/example_1d_png.php" title="1D barcode [PNG] [new window]" target="_blank">PNG</a>]</li>
-<li>1D barcode SVG format [<a href="barcodes/example_1d_svg.php" title="1D barcode [SVG] [new window]" target="_blank">SVG</a>]</li>
-<li>1D barcode SVG INLINE format [<a href="barcodes/example_1d_svgi.php" title="1D barcode [SVGI] [new window]" target="_blank">SVG INLINE</a>]</li>
+                                </div>
+                            </form>
+                            </div>
 
-<li>2D datamatrix barcode HTML format [<a href="barcodes/example_2d_datamatrix_html.php" title="2D datamatrix barcode [HTML] [new window]" target="_blank">HTML</a>]</li>
-<li>2D datamatrix barcode PNG format [<a href="barcodes/example_2d_datamatrix_png.php" title="2D datamatrix barcode [PNG] [new window]" target="_blank">PNG</a>]</li>
-<li>2D datamatrix barcode SVG format [<a href="barcodes/example_2d_datamatrix_svg.php" title="2D datamatrix barcode [SVG] [new window]" target="_blank">SVG</a>]</li>
-<li>2D datamatrix barcode SVG INLINE format [<a href="barcodes/example_2d_datamatrix_svgi.php" title="2D datamatrix barcode [SVGI] [new window]" target="_blank">SVG INLINE</a>]</li>
+                            
+                            <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <h3  class="register-heading">Login as Doctor</h3>
+                                <form method="post" action="func1.php">
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="User Name *" name="username3" onkeydown="return alphaOnly(event);" required/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password *" name="password3" required/>
+                                        </div>
+                                        
+                                        <input type="submit" class="btnRegister" name="docsub1" value="Login"/>
+                                    </div>
+                                </div>
+                            </form>
+                            </div>
 
-<li>2D pdf417 barcode HTML format [<a href="barcodes/example_2d_pdf417_html.php" title="2D pdf417 barcode [HTML] [new window]" target="_blank">HTML</a>]</li>
-<li>2D pdf417 barcode PNG format [<a href="barcodes/example_2d_pdf417_png.php" title="2D pdf417 barcode [PNG] [new window]" target="_blank">PNG</a>]</li>
-<li>2D pdf417 barcode SVG format [<a href="barcodes/example_2d_pdf417_svg.php" title="2D pdf417 barcode [SVG] [new window]" target="_blank">SVG</a>]</li>
-<li>2D pdf417 barcode SVG INLINE format [<a href="barcodes/example_2d_pdf417_svgi.php" title="2D pdf417 barcode [SVGI] [new window]" target="_blank">SVG INLINE</a>]</li>
 
-<li>2D qrcode barcode HTML format [<a href="barcodes/example_2d_qrcode_html.php" title="2D qrcode barcode [HTML] [new window]" target="_blank">HTML</a>]</li>
-<li>2D qrcode barcode PNG format [<a href="barcodes/example_2d_qrcode_png.php" title="2D qrcode barcode [PNG] [new window]" target="_blank">PNG</a>]</li>
-<li>2D qrcode barcode SVG format [<a href="barcodes/example_2d_qrcode_svg.php" title="2D qrcode barcode [SVG] [new window]" target="_blank">SVG</a>]</li>
-<li>2D qrcode barcode SVG INLINE format [<a href="barcodes/example_2d_qrcode_svgi.php" title="2D qrcode barcode [SVGI] [new window]" target="_blank">SVG INLINE</a>]</li>
-</ol>
+                            <div class="tab-pane fade show" id="admin" role="tabpanel" aria-labelledby="profile-tab">
+                                <h3  class="register-heading">Login as Admin</h3>
+                                <form method="post" action="func3.php">
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="User Name *" name="username1" onkeydown="return alphaOnly(event);" required/>
+                                        </div>
+                                        
 
-</body>
-</html>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password *" name="password2" required/>
+                                        </div>
+                                        
+                                        <input type="submit" class="btnRegister" name="adsub" value="Login"/>
+                                    </div>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+    </body>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    </html>
+
+  
